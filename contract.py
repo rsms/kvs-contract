@@ -18,7 +18,7 @@ bdb = storage.KeyValue(filename='/tmp/test.bdb')
 # ---------------------------------------------------------------------------
 # Operations on any/all types:
 
-# dict-style mapping:
+# mapping:
 hdb['johndoe'] # raise KeyError
 del hdb['johndoe'] # raise KeyError
 'johndoe' in avatars # => False
@@ -28,11 +28,11 @@ len(hdb) # => 1
 del hdb['johndoe']
 len(hdb) # => 0
 
-# dict-style methods:
+# methods:
 hdb.get('kate') # => None
 hdb.get('kate', 'hej') # => 'hej'
 hdb.get('kate') # => None
-hdb.setdefault('kate', 'interwebs') # => 'interwebs'
+hdb.set('kate', 'interwebs')
 hdb.get('kate') # => 'interwebs'
 hdb.keys() # => ('kate', )
 hdb.values() # => ('interwebs', )
@@ -43,9 +43,15 @@ hdb.copy() # raise NotImplementedError
 hdb.popitem() # raise NotImplementedError
 hdb.update({'cat':'small', 'dog':'large'})
 len(hdb) # => 2
-
-# extras
 hdb.remove('kate') # => None
+
+# ---------------------------------------------------------------------------
+# Operations on b tree and hash db
+hdb.incr('visitors')
+hdb.incr('visitors')
+hdb['visitors'] # => 2
+hdb.decr('visitors')
+hdb['visitors'] # => 1
 
 # ---------------------------------------------------------------------------
 # Operations on b tree db
