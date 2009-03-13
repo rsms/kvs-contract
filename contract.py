@@ -14,6 +14,7 @@ users.set('johndoe', {'name':'John Doe', 'age':41})
 user = users.get('johndoe')
 print user['age'] # => '41'
 
+print 'johndoe' in avatars # => True
 avatar = avatars.get('johndoe')
 print avatar # => 'GIF89a...blinksdf\0xsdf.sd f'
 avatar = avatars.delete('johndoe')
