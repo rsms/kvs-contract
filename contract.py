@@ -1,12 +1,12 @@
 import storage
 
-users = storage.Table(nodes={
-    'user_lookup': [ '127.0.0.1:41201', '127.0.0.1:51201' ],
-    'user_storage': [ '127.0.0.1:44201', '127.0.0.1:54201' ] })
+users = storage.TyrantTable(nodes={
+  'user_lookup': [ '127.0.0.1:41201', '127.0.0.1:51201' ],
+  'user_storage': [ '127.0.0.1:44201', '127.0.0.1:54201' ] })
 
-avatars = storage.KeyValue(nodes={
-    'avatar_lookup': [ '127.0.0.1:21201', '127.0.0.1:31201' ],
-    'avatar_storage': [ '127.0.0.1:24201', '127.0.0.1:34201' ] })
+avatars = storage.MemcachedKeyValue(nodes={
+  'avatar_lookup': [ '127.0.0.1:21201', '127.0.0.1:31201' ],
+  'avatar_storage': [ '127.0.0.1:24201', '127.0.0.1:34201' ] })
 
 user = users.get('johndoe')
 print user['age'] # => '32'
