@@ -19,6 +19,7 @@ print avatar # => 'GIF89a...blinksdf\0xsdf.sd f'
 avatar = avatars.delete('johndoe')
 avatar = avatars.get('johndoe') # => None
 
+print 'johndoe' in avatars # => False
 print avatars['johndoe'] # raise KeyError
 del avatars['johndoe'] # raise KeyError
 avatars['johndoe'] = 'hello'
